@@ -1,0 +1,6 @@
+streamlit
+nltk
+sentence-transformers
+faiss-cpu
+google-genai
+python-dotenv

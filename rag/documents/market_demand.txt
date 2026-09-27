@@ -1,0 +1,19 @@
+Evaluating Market Demand
+
+1. Signs of Demand
+Evaluating demand begins with identifying observable indicators that people actively search for or talk about solutions. Common signs include frequent discussions in online communities, recurring customer inquiries, and rising search interest for related topics.
+
+2. Target Market
+The target market represents the specific segment of potential buyers and users the product aims to serve. A clearly defined target market allows realistic estimation of total reachable audience and helps prioritize initial marketing efforts.
+
+3. User Interest
+User interest reflects the direct engagement from prospective users when presented with the concept. Tangible signals include sign-ups for early access, survey responses, waitlist registrations, and proactive feedback from potential users.
+
+4. Growth Potential
+Evaluating market growth involves determining whether the broader industry or customer segment is expanding over time. Emerging trends, technological shifts, and evolving consumer habits can indicate strong long-term expansion potential.
+
+5. Market Validation
+Validation means gathering concrete evidence to confirm that market demand exists before heavy investment. Effective methods include customer discovery interviews, lightweight prototypes, landing page tests, and small pilot rollouts.
+
+6. Uncertainty
+Market demand always carries degree of uncertainty. Factors such as changing economic conditions, unpredictable consumer adoption cycles, and unproven market assumptions should be recognized and monitored continuously.

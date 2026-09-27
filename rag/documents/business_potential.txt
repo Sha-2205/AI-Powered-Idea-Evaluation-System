@@ -1,0 +1,19 @@
+Evaluating Business Potential
+
+1. Value Proposition
+A viable business must clearly communicate the unique value it creates for customers. The value proposition explains why a user would adopt and pay for the product over existing habits or competing alternatives.
+
+2. Possible Business Models
+The business model defines how the organization creates, delivers, and captures value. Typical models include subscription SaaS, marketplace commissions, direct sales, usage-based pricing, or advertising-supported free tiers.
+
+3. Monetization
+Monetization focuses on the concrete revenue mechanics. This includes evaluating pricing strategy, payment frequency, customer willingness to pay, and the balance between free entry features and paid premium capabilities.
+
+4. Costs
+Every venture involves direct and indirect operating costs. Primary expenses typically include software hosting, cloud compute, API usage costs, software licenses, customer support, and sales and marketing expenditures.
+
+5. Scalability
+Business scalability refers to the ability to increase revenue exponentially while costs grow only linearly. Software solutions generally exhibit strong scalability because digital services can serve millions of users with relatively low marginal delivery costs.
+
+6. Long-Term Sustainability
+Long-term sustainability evaluates how well the business can survive and maintain profitability. Critical factors include healthy unit economics, high customer retention rates, manageable churn, and resilience against shifting market conditions.

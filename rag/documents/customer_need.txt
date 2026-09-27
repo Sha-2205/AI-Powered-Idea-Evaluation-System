@@ -1,0 +1,19 @@
+Evaluating Customer Need
+
+1. Target Customers
+Identifying precisely who the intended users or buyers are is the foundation of evaluating customer need. A well-defined customer profile describes their demographics, professional roles, daily environment, and specific context where the need arises.
+
+2. Customer Problem
+A viable idea must address a real, identifiable problem or pain point. The problem should be clearly articulable from the customer's perspective rather than defined solely by the proposed technological solution.
+
+3. Problem Severity
+Problem severity assesses how intense the pain point is. Critical problems that cause financial loss, waste significant time, or create severe frustration are far more compelling than minor inconveniences that customers can easily tolerate.
+
+4. Problem Frequency
+Frequency refers to how often customers encounter the problem—whether it occurs multiple times a day, weekly, monthly, or only rarely. High-frequency problems generally offer higher engagement and retention opportunities for new products.
+
+5. Existing Solutions
+Customers rarely do nothing when faced with a meaningful problem. Evaluating existing solutions involves examining the current tools, workarounds, manual processes, or habits customers rely on to cope with the problem today.
+
+6. Willingness to Use a New Solution
+Even if a problem exists, customers must be motivated to switch from their current approach. Evaluating willingness involves looking at how dissatisfied they are with current options, the switching costs involved, and whether they are ready to invest time or money in a new solution.

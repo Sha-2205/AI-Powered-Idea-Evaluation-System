@@ -1,0 +1,19 @@
+Evaluating Competition
+
+1. Direct Competitors
+Direct competitors are companies or products offering substantially similar solutions to the exact same target audience. Assessing direct competitors helps clarify what features and pricing models customers currently expect.
+
+2. Indirect Competitors
+Indirect competitors solve the same core problem or satisfy the same underlying customer need using a fundamentally different method, medium, or technology. Understanding them ensures a comprehensive view of the competitive landscape.
+
+3. Existing Alternatives
+Beyond formal commercial competitors, customers frequently rely on informal alternatives such as spreadsheets, email chains, paper notes, or simply choosing to live with the issue. These informal alternatives often represent the primary competition.
+
+4. Differentiation
+Differentiation defines how the proposed solution stands apart from both direct competitors and existing alternatives. Effective differentiators can be a significantly superior user experience, greater accessibility, specialized niche focus, or unique integrations.
+
+5. Competitive Advantage
+A sustainable competitive advantage refers to distinctive strengths that are difficult for competitors to easily replicate. Examples include proprietary technology, exclusive partnerships, strong network effects, or deep domain expertise.
+
+6. Market Saturation
+Assessing saturation determines whether the market is already overcrowded with established players. In highly saturated markets, customer acquisition can be expensive, requiring stronger specialization or a truly disruptive approach to gain traction.

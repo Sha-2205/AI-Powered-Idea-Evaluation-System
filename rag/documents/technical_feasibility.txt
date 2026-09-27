@@ -1,0 +1,19 @@
+Evaluating Technical Feasibility
+
+1. Required Technologies
+Evaluating feasibility starts by identifying the specific tech stack needed to build the system. This includes frontend frameworks, backend environments, machine learning libraries, databases, APIs, and hosting infrastructure.
+
+2. Implementation Complexity
+Implementation complexity assesses the architectural difficulty and engineering effort required. Building a standard CRUD application is straightforward, whereas real-time processing, distributed consensus, or custom AI models introduce higher complexity.
+
+3. Data Requirements
+Many modern applications depend heavily on data. Feasibility depends on whether the required data is easily accessible, compliant with privacy regulations, of sufficient quality, and structured properly for storage and retrieval.
+
+4. Technical Risks
+Technical risks include potential failure points such as third-party API dependencies, rate limits, performance bottlenecks, security vulnerabilities, or model hallucinations and inaccuracies in generative AI workflows.
+
+5. Scalability
+Scalability examines whether the proposed technical design can support increased workloads. The architecture should be able to handle surges in concurrent users, larger database volumes, and higher network traffic without degrading performance.
+
+6. Development Resources
+Delivering a successful product requires aligning technical ambition with available resources. Key considerations include the engineering skillset of the team, estimated development timeline, tooling budget, and ongoing system maintenance requirements.
