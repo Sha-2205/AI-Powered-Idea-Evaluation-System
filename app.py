@@ -1,8 +1,9 @@
 import json
+import time
 from typing import Dict, Any, Union
 import streamlit as st
 
-from rag.pipeline import run_pipeline
+from rag.pipeline import run_pipeline, get_retriever
 from prompts.evaluation_prompt import build_evaluation_prompt
 from llm.model import generate_evaluation
 from evaluation.scoring import calculate_scores
@@ -424,6 +425,22 @@ if "evaluation_data" not in st.session_state:
 
 
 # ---------------------------------------------------------
+# Cached Resources (Preload & Reuse RAG Index / Embeddings)
+# ---------------------------------------------------------
+@st.cache_resource(show_spinner=False)
+def load_rag_retriever():
+    """
+    Initializes and caches the FAISS retriever and SentenceTransformer model in memory.
+    Ensures document embeddings and FAISS index are built once and reused across all evaluations.
+    """
+    return get_retriever()
+
+
+# Pre-warm cached retriever instance at startup
+cached_retriever = load_rag_retriever()
+
+
+# ---------------------------------------------------------
 # Evaluation Action (Preserves Existing Pipeline Exactly)
 # ---------------------------------------------------------
 if evaluate_btn:
@@ -439,28 +456,47 @@ if evaluate_btn:
             full_idea = f"{full_idea}\n\nProblem Description: {problem_description.strip()}"
 
         try:
-            with st.spinner("Processing idea through NLP, RAG retrieval, and Gemini..."):
+            with st.spinner("Processing idea..."):
+                t_eval_start = time.perf_counter()
+
                 # Step 1 & 2: Existing NLP Preprocessing & RAG Retrieval
-                pipeline_result = run_pipeline(full_idea, top_k=3)
+                t_pipe_start = time.perf_counter()
+                pipeline_result = run_pipeline(full_idea, top_k=3, retriever=cached_retriever)
                 nlp_results = pipeline_result["nlp"]
                 retrieved_context = pipeline_result["rag"]
+                t_pipe_end = time.perf_counter()
 
                 # Step 3: Existing Prompt Construction
+                t_prompt_start = time.perf_counter()
                 prompt = build_evaluation_prompt(
                     idea=full_idea,
                     target_users=target_users.strip(),
                     nlp_results=nlp_results,
                     retrieved_context=retrieved_context
                 )
+                t_prompt_end = time.perf_counter()
 
                 # Step 4: Existing Gemini LLM Call
+                t_llm_start = time.perf_counter()
                 raw_response = generate_evaluation(prompt)
+                t_llm_end = time.perf_counter()
 
                 # Step 5: Existing JSON Parsing
+                t_parse_start = time.perf_counter()
                 evaluation = parse_evaluation_response(raw_response)
 
                 # Step 6: Existing Score Calculation & Validation
                 score_data = calculate_scores(evaluation)
+                t_eval_end = time.perf_counter()
+
+                # Terminal diagnostic logging (invisible to user interface)
+                print(
+                    f"[Evaluation Timing] Pipeline (NLP+RAG): {t_pipe_end - t_pipe_start:.3f}s | "
+                    f"Prompt: {t_prompt_end - t_prompt_start:.4f}s | "
+                    f"Gemini API: {t_llm_end - t_llm_start:.2f}s | "
+                    f"Parsing & Scoring: {t_eval_end - t_parse_start:.4f}s | "
+                    f"Total: {t_eval_end - t_eval_start:.2f}s"
+                )
 
                 # Store in session state for seamless interactive display
                 st.session_state["evaluation_data"] = {

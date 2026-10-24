@@ -26,7 +26,7 @@ def get_retriever(doc_dir: str = None) -> SimpleRAGRetriever:
     return _retriever_instance
 
 
-def run_pipeline(idea: str, top_k: int = 3) -> Dict[str, Any]:
+def run_pipeline(idea: str, top_k: int = 3, retriever: SimpleRAGRetriever = None) -> Dict[str, Any]:
     """
     Executes the integrated NLP and RAG pipeline:
     1. Preprocesses the idea using classical NLP (cleaning, tokenization, stop-words, keywords).
@@ -36,6 +36,7 @@ def run_pipeline(idea: str, top_k: int = 3) -> Dict[str, Any]:
     Args:
         idea (str): Raw input idea.
         top_k (int): Number of relevant knowledge chunks to retrieve (default: 3).
+        retriever (SimpleRAGRetriever, optional): Pre-initialized or cached retriever instance.
 
     Returns:
         Dict[str, Any]: Clean Python dictionary containing:
@@ -47,7 +48,8 @@ def run_pipeline(idea: str, top_k: int = 3) -> Dict[str, Any]:
     nlp_results = preprocess_text(idea)
 
     query = nlp_results.get("cleaned_text", "")
-    retriever = get_retriever()
+    if retriever is None:
+        retriever = get_retriever()
     rag_results = retriever.retrieve(query=query, top_k=top_k)
 
     return {

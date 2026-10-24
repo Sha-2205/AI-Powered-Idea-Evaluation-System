@@ -15,6 +15,7 @@ _model_cache = {}
 def get_embedding_model(model_name: str = DEFAULT_MODEL_NAME) -> SentenceTransformer:
     """
     Loads and caches the SentenceTransformer model.
+    Attempts local cache first to avoid slow Hugging Face Hub network checks or rate-limits.
 
     Args:
         model_name (str): Hugging Face model identifier.
@@ -23,7 +24,12 @@ def get_embedding_model(model_name: str = DEFAULT_MODEL_NAME) -> SentenceTransfo
         SentenceTransformer: Loaded model instance.
     """
     if model_name not in _model_cache:
-        _model_cache[model_name] = SentenceTransformer(model_name)
+        try:
+            # Load from local cache first to prevent blocking remote API calls and timeouts
+            _model_cache[model_name] = SentenceTransformer(model_name, local_files_only=True)
+        except Exception:
+            # Fallback to standard loading/download if not yet cached locally
+            _model_cache[model_name] = SentenceTransformer(model_name)
     return _model_cache[model_name]
 
 
