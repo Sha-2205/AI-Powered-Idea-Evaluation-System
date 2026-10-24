@@ -19,16 +19,42 @@ MODEL_NAME = "gemini-3.5-flash-lite"
 _gemini_client = None
 
 
+def get_api_key() -> str:
+    """
+    Retrieves the Gemini API key.
+    Checks Streamlit Secrets first (for Streamlit Community Cloud deployment),
+    and falls back to environment variables / local .env file.
+    """
+    # 1. Check Streamlit Secrets (priority on Streamlit Community Cloud)
+    try:
+        import streamlit as st
+        if "GEMINI_API_KEY" in st.secrets:
+            key = st.secrets["GEMINI_API_KEY"]
+            if key and str(key).strip():
+                return str(key).strip()
+    except Exception:
+        # Streamlit secrets not configured or secrets.toml absent (normal for local dev / CLI)
+        pass
+
+    # 2. Check environment variable / local .env
+    key = os.getenv("GEMINI_API_KEY")
+    if key and key.strip():
+        return key.strip()
+
+    return ""
+
+
 def get_gemini_client() -> genai.Client:
     """
-    Retrieves or initializes the Gemini API client using the API key from .env.
+    Retrieves or initializes the Gemini API client using the API key
+    from Streamlit Secrets or .env.
     """
     global _gemini_client
     if _gemini_client is None:
-        api_key = os.getenv("GEMINI_API_KEY")
+        api_key = get_api_key()
         if not api_key:
             raise ValueError(
-                "GEMINI_API_KEY not found. Please verify that GEMINI_API_KEY is configured in your .env file."
+                "GEMINI_API_KEY not found. Please configure GEMINI_API_KEY in Streamlit Secrets (for cloud deployment) or in your local .env file."
             )
         _gemini_client = genai.Client(api_key=api_key)
     return _gemini_client
